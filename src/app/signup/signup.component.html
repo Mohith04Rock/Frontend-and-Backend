@@ -49,6 +49,9 @@
             <input type="file" name="photo" id="photo" class="form-control"(input)="onFileSelected(profile.files[0])" #profile>
         </div>
 
+        <!-- selected image preview -->
+        <img src="{{imageUrl}}" width="150px" alt="">
+
         <!-- submit button -->
         <button class="btn btn-info d-block mx-auto mt-3" type="submit">Submit</button>
     </form>
