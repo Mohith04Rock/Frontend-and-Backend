@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h6 class="display-6 text-center mt-3">Login Form</h6>
+    <form [formGroup]="loginForm" #formRef="ngForm" (ngSubmit)="onSubmit()" class="mx-auto bg-light shadow w-50 px-5 py-5">
+        <!-- username -->
+        <div class="form-group mt-3">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" formControlName="username">
+        </div>
+        <!-- user registration error messages -->
+        <p class="fw-bold text-center text-danger" *ngIf="registrationError.error">
+            {{registrationError.errorMessage}}
+        </p>
+         <!-- error message -->
+         <div *ngIf="formRef.submitted || (username.dirty || username.touched) && username.invalid">
+            <p class="text-danger fw-bold" *ngIf="username.errors?.['required']">Username is required</p>
+        </div>
+        <!-- password -->
+        <div class="form-group mt-3">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" formControlName="password">
+        </div>
+        <!-- error message -->
+        <div *ngIf="formRef.submitted || (password.dirty || password.touched) && password.invalid">
+            <p class="fw-bold text-danger" *ngIf="password.errors?.['required']">Password is required</p>
+        </div>
+        <!-- login button -->
+        <button class="btn btn-info d-block mx-auto mt-3" type="submit">Login</button>
+    </form>
+</div>

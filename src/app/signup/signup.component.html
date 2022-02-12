@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <h6 class="display-6 text-center mt-3">Register Form</h6>
+    <form [formGroup]="userSignUp" #formRef="ngForm" (ngSubmit)="formRef.form.valid&&onSubmit(template)" class="mx-auto w-50 bg-light shadow px-5 py-5">
+        <!-- username -->
+        <div class="form-group mt-3">
+            <label for="" class="form-label">Username</label>
+            <input type="text" name="" id="" class="form-control" formControlName="username">
+            <!-- user registration error messages -->
+            <p class="fw-bold text-center text-danger" *ngIf="registrationError.error">
+                {{registrationError.errorMessage}}
+            </p>
+            <!-- error message -->
+            <div *ngIf="formRef.submitted || (username.dirty || username.touched) && username.invalid">
+                <p class="text-danger fw-bold" *ngIf="username.errors?.['required']">Username is required</p>
+            </div>
+        </div>
+        <!-- password -->
+        <div class="form-group mt-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" formControlName="password">
+            <!-- error message -->
+            <div *ngIf="formRef.submitted || (password.dirty || password.touched) && password.invalid">
+                <p class="fw-bold text-danger" *ngIf="password.errors?.['required']">Password is required</p>
+            </div>
+        </div>
+        <!-- email -->
+        <div class="form-group mt-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" formControlName="email">
+            <!-- error messages -->
+            <div *ngIf ="formRef.submitted || ( email.dirty || email.touched ) && email.invalid">
+                <p class="text-danger fw-bold" *ngIf="email.errors?.['required']">Email is required</p>
+                <p class="text-danger fw-bold" *ngIf="email.errors?.['email']">Enter in Email format</p>
+            </div>
+        </div>
+        <!-- city -->
+        <div class="form-group mt-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" name="city" id="city" class="form-control" formControlName="city">
+            <!-- error messages -->
+            <div *ngIf="formRef.submitted || ( city.dirty || city.touched ) && city.invalid">
+                <p class="text-danger fw-bold" *ngIf="city.errors?.['required']">City is required</p>
+            </div>
+        </div>
+
+         <!-- profile pic -->
+         <div class="form-group mt-3">
+            <label for="" class="form-label">Select Profile</label>
+            <input type="file" name="photo" id="photo" class="form-control"(input)="onFileSelected(profile.files[0])" #profile>
+        </div>
+
+        <!-- submit button -->
+        <button class="btn btn-info d-block mx-auto mt-3" type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- modal -->
+<ng-template #template>
+    <div class="modal-body text-success fw-bold text-center bg-light">
+        <p>Proceed to Login?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+    </div>
+</ng-template>

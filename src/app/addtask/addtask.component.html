@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h6 class="display-6 text-center mt-3">Task Form</h6>
+    <form [formGroup]="taskForm" #formRef="ngForm" (ngSubmit)="onSubmit()" class="mx-auto bg-light shadow w-50 px-5 py-5">
+        <!-- name of task -->
+        <div class="form-group mt-3">
+            <label for="taskName">Name of Task</label>
+            <input type="text" name="taskName" id="taskName" class="form-control" formControlName="taskName">
+        </div>
+        <!-- name of task error messages -->
+        <p class="fw-bold text-center text-danger" *ngIf="registrationError.error">
+            {{registrationError.errorMessage}}
+        </p>
+         <!-- error message -->
+         <div *ngIf="formRef.submitted || (taskName.dirty || taskName.touched) && taskName.invalid">
+            <p class="text-danger fw-bold" *ngIf="taskName.errors?.['required']">Name of Task is required</p>
+        </div>
+        <!-- date of task -->
+        <div class="form-group mt-3">
+            <label for="taskDate">Date of Task</label>
+            <input type="date" name="taskDate" id="taskDate" class="form-control" formControlName="taskDate">
+        </div>
+        <!-- error message -->
+        <div *ngIf="formRef.submitted || (taskDate.dirty || taskDate.touched) && taskDate.invalid">
+            <p class="fw-bold text-danger" *ngIf="taskDate.errors?.['required']">Date of Task is required</p>
+        </div>
+         <!-- description of task -->
+         <div class="form-group mt-3">
+            <label for="description">Description of Task</label>
+            <textarea name="description" id="description" cols="15" rows="5" formControlName="description" class="form-control"></textarea>
+        </div>
+        <!-- error message -->
+        <div *ngIf="formRef.submitted || (description.dirty || description.touched) && description.invalid">
+            <p class="fw-bold text-danger" *ngIf="description.errors?.['required']">Description is required</p>
+        </div>
+        <!-- submit button -->
+        <button class="btn btn-info d-block mx-auto mt-3" type="submit">Add</button>
+    </form>
+</div>

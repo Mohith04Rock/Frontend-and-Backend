@@ -1,0 +1,13 @@
+<h5 class="text-end">Welcome, <span class="text-success me-2">{{userObj.username}}</span>
+<img src="{{userObj.profileImage}}" width="30px" height="30px" alt=""></h5>
+<h6 class="text-end text-info">{{userObj.email}}</h6>
+
+<!-- provide child routes -->
+<ul class="nav nav-pills justify-content-around">
+    <li class="nav-item"><a href="" class="nav-link" routerLink="addtask" routerLinkActive="active">Add Task</a></li>
+    <li class="nav-item"><a href="" class="nav-link" routerLink="viewtasks" routerLinkActive="active">View Task</a></li>
+</ul>
+<!-- placeholder for children -->
+<div class="container mt-5">
+    <router-outlet></router-outlet>
+</div>

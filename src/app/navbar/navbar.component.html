@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a href="" class="navbar-brand px-2">MyApp</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#my">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="my">
+      <ul class="navbar-nav ms-auto px-2">
+        <li class="nav-item"><a href="" class="nav-link" routerLink="home" routeLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Home</a></li>
+        <li class="nav-item" *ngIf="userServiceObj.getUserBehaviourSubject().getValue()==null"><a href="" class="nav-link" routerLink="login" routeLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Login</a></li>
+        <li class="nav-item" *ngIf="userServiceObj.getUserBehaviourSubject().getValue()!==null"><a href="" class="nav-link" routerLink="login" routeLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="userServiceObj.userLogout()">Logout</a></li>
+        <li class="nav-item"><a href="" class="nav-link" routerLink="signup" routeLinkActive="active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" >Sign up</a></li>
+      </ul>
+    </div>
+</nav>
