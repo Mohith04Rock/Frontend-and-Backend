@@ -23,9 +23,9 @@ userApp.use(express.json())
 
 
 cloudinary.config({
-    cloud_name:'dfg9mrvcm',
-    api_key:'552412861398733',
-    api_secret:'3QYLj_EdEpA_2hGOvj1iJh-bEwU'
+    cloud_name:process.env.CLOUD_NAME,
+    api_key:process.env.API_KEY,
+    api_secret:process.env.API_SECRET
 })
 
 const storage = new CloudinaryStorage({
